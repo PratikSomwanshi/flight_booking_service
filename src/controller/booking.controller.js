@@ -1,11 +1,11 @@
 const { Logger } = require("../config");
-const { AirplaneService } = require("../services");
+const { BookingService } = require("../services");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
-const Strings = require("../utils/strings/airplane.string");
+const Strings = require("../utils/strings/booking.string");
 
-async function createAirplane(req, res) {
+async function createBooking(req, res) {
     try {
-        const response = await AirplaneService.createAirplane(req.body);
+        const response = await BookingService.createBooking(req.body);
         Logger.info(Strings.CRATED);
 
         SuccessResponse.message = Strings.CRATED;
@@ -21,9 +21,9 @@ async function createAirplane(req, res) {
     }
 }
 
-async function getAirplane(req, res) {
+async function getBooking(req, res) {
     try {
-        const response = await AirplaneService.getAirplane(req.params.id);
+        const response = await BookingService.getBooking(req.params.id);
         Logger.info(Strings.CRATED);
 
         SuccessResponse.message = Strings.CRATED;
@@ -39,9 +39,9 @@ async function getAirplane(req, res) {
     }
 }
 
-async function getAllAirplane(req, res) {
+async function getAllBooking(req, res) {
     try {
-        const response = await AirplaneService.getAllAirplane(req.body.id);
+        const response = await BookingService.getAllBooking(req.body.id);
         Logger.info(Strings.CRATED);
 
         SuccessResponse.message = Strings.CRATED;
@@ -57,15 +57,15 @@ async function getAllAirplane(req, res) {
     }
 }
 
-async function updateAirplane(req, res) {
+async function updateBooking(req, res) {
     try {
-        const response = await AirplaneService.updateAirplane(
+        const response = await BookingService.updateBooking(
             req.body,
             req.params.id
         );
         Logger.info(Strings.CRATED);
 
-        SuccessResponse.message = "successfully updated the airplane";
+        SuccessResponse.message = "successfully updated the booking";
         SuccessResponse.data = response;
 
         return res.json(SuccessResponse);
@@ -78,12 +78,12 @@ async function updateAirplane(req, res) {
     }
 }
 
-async function deleteAirplane(req, res) {
+async function deleteBooking(req, res) {
     try {
-        const response = await AirplaneService.deleteAirplane(req.params.id);
+        const response = await BookingService.deleteBooking(req.params.id);
         Logger.info(Strings.CRATED);
 
-        SuccessResponse.message = "successfully deleted the airplane";
+        SuccessResponse.message = "successfully deleted the booking";
         SuccessResponse.data = response;
 
         return res.json(SuccessResponse);
@@ -97,9 +97,9 @@ async function deleteAirplane(req, res) {
 }
 
 module.exports = {
-    createAirplane,
-    getAirplane,
-    getAllAirplane,
-    deleteAirplane,
-    updateAirplane,
+    createBooking,
+    getBooking,
+    getAllBooking,
+    deleteBooking,
+    updateBooking,
 };

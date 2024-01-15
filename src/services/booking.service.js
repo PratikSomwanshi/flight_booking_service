@@ -1,49 +1,49 @@
 const { StatusCodes } = require("http-status-codes");
 
-const { AirplaneRepository } = require("../repository");
+const { BookingRepository } = require("../repository");
 const AppError = require("../utils/error/AppError");
 
-const airplaneRepository = new AirplaneRepository();
+const bookingRepository = new BookingRepository();
 
-async function createAirplane(data) {
+async function createBooking(data) {
     try {
-        const response = await airplaneRepository.create(data);
+        const response = await bookingRepository.create(data);
         return response;
     } catch (error) {
         throw new AppError(error.message, StatusCodes.BAD_REQUEST);
     }
 }
 
-async function getAirplane(id) {
+async function getBooking(id) {
     try {
-        const response = await airplaneRepository.get(id);
+        const response = await bookingRepository.get(id);
         return response;
     } catch (error) {
         throw new AppError(error.message, StatusCodes.BAD_REQUEST);
     }
 }
 
-async function getAllAirplane() {
+async function getAllBooking() {
     try {
-        const response = await airplaneRepository.getAll();
+        const response = await bookingRepository.getAll();
         return response;
     } catch (error) {
         throw new AppError(error.message, StatusCodes.BAD_REQUEST);
     }
 }
 
-async function updateAirplane(data, id) {
+async function updateBooking(data, id) {
     try {
-        const response = await airplaneRepository.update(data, id);
+        const response = await bookingRepository.update(data, id);
         return response;
     } catch (error) {
         throw new AppError(error.message, StatusCodes.BAD_REQUEST);
     }
 }
 
-async function deleteAirplane(id) {
+async function deleteBooking(id) {
     try {
-        const response = await airplaneRepository.delete(id);
+        const response = await bookingRepository.delete(id);
         return response;
     } catch (error) {
         throw new AppError(error.message, StatusCodes.BAD_REQUEST);
@@ -51,9 +51,9 @@ async function deleteAirplane(id) {
 }
 
 module.exports = {
-    createAirplane,
-    getAirplane,
-    getAllAirplane,
-    updateAirplane,
-    deleteAirplane,
+    createBooking,
+    getBooking,
+    getAllBooking,
+    updateBooking,
+    deleteBooking,
 };
