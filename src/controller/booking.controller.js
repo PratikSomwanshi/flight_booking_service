@@ -5,7 +5,10 @@ const Strings = require("../utils/strings/booking.string");
 
 async function createBooking(req, res) {
     try {
-        const response = await BookingService.createBooking(req.body);
+        const response = await BookingService.createBooking({
+            flightId: req.body.flightId,
+            noOfSeats: req.body.noOfSeats,
+        });
         Logger.info(Strings.CRATED);
 
         SuccessResponse.message = Strings.CRATED;
@@ -59,15 +62,15 @@ async function getAllBooking(req, res) {
     }
 }
 
-async function updateBooking(req, res) {
+async function makePayment(req, res) {
     try {
-        const response = await BookingService.updateBooking(
-            req.body,
-            req.params.id
-        );
+        const response = await BookingService.makePayment({
+            bookingId: req.body.bookingId,
+            price: req.body.price,
+        });
         Logger.info(Strings.CRATED);
 
-        SuccessResponse.message = "successfully updated the booking";
+        SuccessResponse.message = Strings.CRATED;
         SuccessResponse.data = response;
 
         return res.json(SuccessResponse);
@@ -75,24 +78,7 @@ async function updateBooking(req, res) {
         Logger.error(`${Strings.FAILED_CREATE} : ${error.message}`);
 
         ErrorResponse.error = error;
-
-        return res.status(error.statusCode).json(ErrorResponse);
-    }
-}
-
-async function deleteBooking(req, res) {
-    try {
-        const response = await BookingService.deleteBooking(req.params.id);
-        Logger.info(Strings.CRATED);
-
-        SuccessResponse.message = "successfully deleted the booking";
-        SuccessResponse.data = response;
-
-        return res.json(SuccessResponse);
-    } catch (error) {
-        Logger.error(`${Strings.FAILED_CREATE} : ${error.message}`);
-
-        ErrorResponse.error = error;
+        console.log(error);
 
         return res.status(error.statusCode).json(ErrorResponse);
     }
@@ -102,6 +88,5 @@ module.exports = {
     createBooking,
     getBooking,
     getAllBooking,
-    deleteBooking,
-    updateBooking,
+    makePayment,
 };
