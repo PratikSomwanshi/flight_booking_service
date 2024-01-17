@@ -23,6 +23,9 @@ dependencies:
   mysql2:
     specifier: ^3.7.0
     version: 3.7.0
+  node-cron:
+    specifier: ^3.0.3
+    version: 3.0.3
   sequelize:
     specifier: ^6.35.2
     version: 6.35.2(mysql2@3.7.0)
@@ -950,6 +953,13 @@ packages:
 
   /next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
+    dev: false
+
+  /node-cron@3.0.3:
+    resolution: {integrity: sha512-dOal67//nohNgYWb+nWmg5dkFdIwDm8EpeGYMekPMrngV3637lqnX0lbUcCtgibHTz6SEz7DAIjKvKDFYCnO1A==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      uuid: 8.3.2
     dev: false
 
   /nopt@7.2.0:
